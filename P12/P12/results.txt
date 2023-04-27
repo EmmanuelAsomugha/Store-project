@@ -1,0 +1,260 @@
+====================
+HOMEWORK P12 RESULTS
+====================
+
+Spring 2023
+
+NOTE: We will not be grading for "correct" answers, since your results may vary, but rather answers that are consistent with your measured results.
+
+IMPORTANT: If at all possible, time your program on a machine with at least 4 cores. (CSE VM may be configured to use multiple cores in the VirtualBox properties panel.)
+
+FULL CREDIT
+===========
+
+QUESTION 1: Which puzzle did you use as ThreadsOfSudoku's parameter to achieve a 30+ second runtime (using "real"): 14
+
+QUESTION 2: Provide the full ``time`` output for your program, with 1 to 16 threads. It may prove interesting to screenshot your system monitor while these run. You may be able to run all of these with a single bash command if you like (replace 14_zeros with your puzzle from QUESTION 1): 
+
+for i in {1..16} ; do printf "\n Threads %d:\n" $i ; time (java ThreadsOfSudoku $i puzzle.txt 14_zeros > temp.txt) ; done
+
+Example Timing (first 2 of 16 runs only on Antares):
+
+ricegf@antares$ for i in {1..16} ; do printf "\n Threads %d:\n" $i ; time (java ThreadsOfSudoku $i puzzle.txt 14_zeros > temp.txt) ; done
+
+Your Timings(these are the results I got)
+
+  Threads 1:
+
+real	2m15.751s
+user	2m10.747s
+sys	0m2.158s
+
+ Threads 2:
+
+real	2m17.878s
+user	2m12.024s
+sys	0m2.778s
+
+ Threads 3:
+
+real	2m17.181s
+user	2m11.550s
+sys	0m1.908s
+
+ Threads 4:
+
+real	2m23.161s
+user	2m11.785s
+sys	0m4.440s
+
+ Threads 5:
+
+real	2m27.335s
+user	2m10.110s
+sys	0m3.674s
+
+ Threads 6:
+
+real	2m33.079s
+user	2m15.677s
+sys	0m2.087s
+
+ Threads 7:
+
+real	2m24.105s
+user	2m4.415s
+sys	0m8.497s
+
+ Threads 8:
+
+real	2m5.500s
+user	2m1.853s
+sys	0m1.433s
+
+ Threads 9:
+
+real	5m57.132s
+user	5m39.382s
+sys	0m9.807s
+
+ Threads 10:
+
+real	2m13.229s
+user	2m4.820s
+sys	0m2.993s
+
+ Threads 11:
+
+real	2m18.379s
+user	2m7.540s
+sys	0m4.076s
+
+ Threads 12:
+
+real	2m25.120s
+user	2m13.627s
+sys	0m3.943s
+
+Threads 13:
+
+real	2m7.786s
+user	2m3.485s
+sys	0m1.676s
+
+ Threads 14:
+
+real	2m9.019s
+user	2m0.978s
+sys	0m2.736s
+
+ Threads 15:
+
+real	2m9.612s
+user	2m5.087s
+sys	0m1.310s
+
+ Threads 16:
+
+real	2m17.694s
+user	2m11.777s
+sys	0m2.526s
+
+
+
+
+
+
+
+
+
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program slightly?  Why or why not?
+
+Adding more threads speeds up the program. This is because threads make a program more efficient by enabling it to multitask.
+
+
+
+QUESTION 4: Does adding more threads increase the "system load", or is it constant regardless of the number of threads?  Why?
+
+Adding more threads increases the system loads. This is because programs that are threaded requires a higher number of operating system resources such as the memory and CPU to be able to execute properly.
+
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of ThreadsOfSudoku as you did for the full credit version. Post your timings here.
+
+YOUR Timing:
+ Threads 1:
+
+real	4m21.373s
+user	4m9.503s
+sys	0m5.829s
+
+ Threads 2:
+
+real	3m25.977s
+user	3m19.680s
+sys	0m2.515s
+
+ Threads 3:
+
+real	3m1.189s
+user	2m55.508s
+sys	0m2.326s
+
+ Threads 4:
+
+real	2m56.493s
+user	2m49.850s
+sys	0m2.668s
+
+ Threads 5:
+
+real	2m53.405s
+user	2m48.277s
+sys	0m2.325s
+
+ Threads 6:
+
+real	2m49.203s
+user	2m43.443s
+sys	0m2.210s
+
+ Threads 7:
+
+real	2m45.237s
+user	2m39.779s
+sys	0m1.979s
+
+ Threads 8:
+
+real	2m50.267s
+user	2m41.215s
+sys	0m1.715s
+
+ Threads 9:
+
+real	2m42.554s
+user	2m37.581s
+sys	0m1.656s
+
+ Threads 10:
+
+real	2m40.231s
+user	2m36.206s
+sys	0m1.811s
+
+ Threads 11:
+
+real	2m41.371s
+user	2m36.408s
+sys	0m2.030s
+
+ Threads 12:
+
+real	2m41.878s
+user	2m36.958s
+sys	0m2.122s
+
+Threads 13:
+
+real	2m42.427s
+user	2m36.620s
+sys	0m1.794s
+
+ Threads 14:
+
+real	2m43.212s
+user	2m36.309s
+sys	0m2.897s
+
+ Threads 15:
+
+real	2m40.379s
+user	2m36.021s
+sys	0m1.596s
+
+ Threads 16:
+
+real	2m41.461s
+user	2m36.137s
+sys	0m1.890s
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+The thread pool is roughly equivalent when we considered the real time. The user and the system time had littel bit of increase compared to the results gotten from the full credit
+
+
+
+QUESTION 7: Compare the full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+The bonus solution code is more supportable over time.
+
+
